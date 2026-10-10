@@ -11,4 +11,4 @@ run: setup
 
 
 restore: setup
-	./restore.sh $(MAL) $(DIR)
+	./restore.sh $(DIR) $(MAL)
