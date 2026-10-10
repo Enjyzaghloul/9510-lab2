@@ -5,7 +5,7 @@ malicious_dir=$2
 while true; do
  files=("$malicious_dir"/*)
  if [ ! -e "${files[0]}" ]; then
-    echo "No malicious files found in $malicious_dir"
+    echo "No malicious files to review."
     break 
  fi
  i=1
@@ -28,9 +28,9 @@ while true; do
  case "$choice" in
     1) mv "$file" "$dir/$name";
        echo "$name" >> whitelist.txt
-       echo "File $name r $dir.";;
+       echo "Restored $name to $dir.";;
     2) rm "$file";
-       echo "File $name deleted from $malicious_dir.";;
+       echo "$name permanently deleted.";;
     3);;
     *) echo "Invalid choice. Please try again.";;
     esac
