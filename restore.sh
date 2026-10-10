@@ -27,7 +27,8 @@ while true; do
  read -p "1. restore 2.delete 3. exit: " choice
  case "$choice" in
     1) mv "$file" "$dir/$name";
-       echo "File $name restored to $dir.";;
+       echo "$name" >> whitelist.txt
+       echo "File $name r $dir.";;
     2) rm "$file";
        echo "File $name deleted from $malicious_dir.";;
     3);;
