@@ -44,4 +44,13 @@ interval=$3
   ls -l "$dir" > directory-info.last
 
  fi
-       
+
+  while true; do
+    sleep "$interval"
+    ls -l "$dir" > directory-info.new
+    if ! cmp -s directory-info.last directory-info.new; then
+       scan
+       cp directory-info.new directory-info.last
+    fi
+  done
+  
