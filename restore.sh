@@ -21,4 +21,17 @@ while true; do
     continue
  fi
 
- 
+ file="${files[$((n - 1))]}"
+ name=$(basename "$file")
+
+ read -p "1. restore 2.delete 3. exit: " choice
+ case "$choice" in
+    1) mv "$file" "$dir/$name";
+       echo "File $name restored to $dir.";;
+    2) rm "$file";
+       echo "File $name deleted from $malicious_dir.";;
+    3);;
+    *) echo "Invalid choice. Please try again.";;
+    esac
+ done
+    
