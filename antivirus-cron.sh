@@ -12,6 +12,9 @@ scan(){
     for f in "$dir"/*; do
          [ -f "$f" ] || continue
            name=$(basename "$f")
+    if [ -f whitelist.txt ] && grep -qxF "$name" "$base/whitelist.txt"; then
+       continue
+    fi
            bad=0
            ext="${name##*.}"
            if [ "$ext" != "$name" ]; then
