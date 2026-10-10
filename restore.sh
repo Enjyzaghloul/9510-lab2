@@ -1,4 +1,4 @@
-
+#!/bin/bash
 dir=$1
 malicious_dir=$2
 
@@ -6,7 +6,7 @@ while true; do
  files=("$malicious_dir"/*)
  if [ ! -e "${files[0]}" ]; then
     echo "No malicious files found in $malicious_dir"
-    break
+    break 
  fi
  i=1
  for f in "${files[@]}"; do
