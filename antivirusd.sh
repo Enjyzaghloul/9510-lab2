@@ -18,6 +18,9 @@ interval=$3
    for f in "$dir"/*; do
         [ -f "$f" ] || continue #will skip if not a file 
         name=$(basename "$f")
+    if [ -f whitelist.txt ] && grep -qxF "$name" whitelist.txt; then
+       continue
+    fi
         bad=0
 
         ext="${name##*.}"
