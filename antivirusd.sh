@@ -9,8 +9,8 @@ dir=$1
 malicious_dir=$2
 interval=$3
 
- extensions=("exe bat vbs scr ps1"
- keywords=( "malware" "virus" "trojan" "worm" "ransomware"  ) 
+ extensions="exe bat vbs scr ps1"
+ keywords="virus|trojan|malware|worm|ransomware"
 
  mkdir -p "$malicious_dir"
 
@@ -21,7 +21,7 @@ interval=$3
         bad=0
 
         ext="${name##*.}"
-        if [ "$ext" != "name" ]; then
+        if [ "$ext" != "$name" ]; then
             for e in $extensions; do
                  [ "$ext" == "$e" ] && bad=1
             done
@@ -32,7 +32,7 @@ interval=$3
         fi
 
         if [ $bad -eq 1 ]; then
-            echo "$name Malicious file detected and deleted "
+           echo "$name is malicious and it is DELETED"
             cp "$f" "$malicious_dir/$name"
             rm "$f"
            
