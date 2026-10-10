@@ -14,4 +14,28 @@ interval=$3
 
  mkdir -p "$malicious_dir"
 
- scan()
+ scan(){
+   for f in "$dir"/*; do
+        [ -f "$f" ] || continue #will skip if not a file 
+        name=$(basename "$f")
+        bad=0
+
+        ext="${name##*.}"
+        if [ "$ext" != "name" ]; then
+            for e in $extensions; do
+                 [ "$ext" == "$e" ] && bad=1
+            done
+        fi
+
+        if [ $bad -eq 0 ] && grep -qiaE "$keywords" "$f"; then
+            bad=1
+        fi
+
+        if [ $bad -eq 1 ]; then
+            echo "$name Malicious file detected and deleted "
+            cp "$f" "$malicious_dir/$name"
+            rm "$f"
+           
+        fi
+           done 
+           }
