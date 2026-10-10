@@ -39,3 +39,9 @@ interval=$3
         fi
            done 
            }
+ if[ ! -f directory-info.last ]; then
+  scan
+  ls -l "$dir" > directory-info.last
+
+ fi
+       
