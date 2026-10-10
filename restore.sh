@@ -24,7 +24,7 @@ while true; do
  file="${files[$((n - 1))]}"
  name=$(basename "$file")
 
- read -p "1. restore 2.delete 3. exit: " choice
+ read -p "1. restore 2.delete 3. leave: " choice
  case "$choice" in
     1) mv "$file" "$dir/$name";
        echo "$name" >> whitelist.txt
