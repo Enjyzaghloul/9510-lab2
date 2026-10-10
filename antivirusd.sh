@@ -56,4 +56,3 @@ interval=$3
        cp directory-info.new directory-info.last
     fi
   done
-  

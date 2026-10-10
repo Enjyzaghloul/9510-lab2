@@ -5,14 +5,14 @@ dir="$base/testdir"
 malicious_dir="$base/quarantine"
 
 extensions="exe bat vbs ps1 scr"
-keywords="virus|malware|trojan|worm|spyware|adware|ransomware"
+keywords="virus|malware|trojan|worm|ransomware"
 
 mkdir -p "$dir" "$malicious_dir"
 scan(){
     for f in "$dir"/*; do
          [ -f "$f" ] || continue
            name=$(basename "$f")
-    if [ -f whitelist.txt ] && grep -qxF "$name" "$base/whitelist.txt"; then
+    if [ -f "$base/whitelist.txt" ] && grep -qxF "$name" "$base/whitelist.txt"; then
        continue
     fi
            bad=0
