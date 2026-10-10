@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if[ $# -ne 3 ]; then 
+if [ $# -ne 3 ]; then 
     echo "Usage: $0 dir malicious_dir interval-secs"
     exit 1
 fi              
@@ -39,7 +39,7 @@ interval=$3
         fi
            done 
            }
- if[ ! -f directory-info.last ]; then
+ if [ ! -f directory-info.last ]; then
   scan
   ls -l "$dir" > directory-info.last
 
